@@ -9,3 +9,6 @@ yarn.lock
 .DS_Store
 projects/pooltogether/index.js
 .vscode
+
+cex-owners.json
+cex-owners.sql

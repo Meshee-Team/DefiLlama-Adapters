@@ -165,6 +165,7 @@ function cexExports(config) {
   const chains = Object.keys(config).filter(i => i !== 'bep2')
   const exportObj = {
     timetravel: false,
+    cexOptions: {}
   }
   chains.forEach(chain => {
     let { tokensAndOwners, owners, tokens, blacklistedTokens, } = config[chain]
@@ -179,7 +180,8 @@ function cexExports(config) {
 
     const options = { ...config[chain], owners, tokens, chain, blacklistedTokens, }
     if (chain === 'solana')  options.solOwners = owners
-    exportObj[chain] = { tvl: sumTokensExport(options) }
+    exportObj[chain] = { tvl: sumTokensExport(options), }
+    exportObj.cexOptions[chain] = options
   })
   if (config.bep2) {
     const bscTvl = exportObj.bsc.tvl
